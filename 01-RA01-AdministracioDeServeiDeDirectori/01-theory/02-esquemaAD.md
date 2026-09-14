@@ -205,7 +205,7 @@ Els seus components:
 Un DN és la suma jeràrquica de tots ells.
 
 ```
-uid=mpuig,ou=Professors,ou=Departament,dc=ins-torreraja,dc=cat
+uid=mpuig,ou=Professors,ou=Departament,dc=ins-torreroja,dc=cat
 ```
 
 ---

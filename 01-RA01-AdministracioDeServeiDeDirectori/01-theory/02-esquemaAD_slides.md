@@ -142,12 +142,12 @@ Enllaços interns entre objectes
 Representa l'**adreça completa** d'un objecte:
 
 ```text
-uid=mpuig,ou=Professorat,ou=Departament,dc=ins-torreraja,dc=cat
+uid=mpuig,ou=Professorat,ou=Departament,dc=ins-torreroja,dc=cat
 ```
 
 * **RDN:** `uid=mpuig`
 * **OUs:** Professorat, Departament
-* **Domini:** ins-torreraja.cat
+* **Domini:** ins-torreroja.cat
 
 > Adreça postal al revés: del més concret → al més general.
 

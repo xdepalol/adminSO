@@ -94,7 +94,7 @@ Descriu el flux general: client → servidor → validació d'atributs
 ### **11. Analitza aquest DN i explica cada component:**
 
 ```
-uid=mpuig,ou=Professorat,dc=ins-torreraja,dc=cat
+uid=mpuig,ou=Professorat,dc=ins-torreroja,dc=cat
 ```
 
 Indica:

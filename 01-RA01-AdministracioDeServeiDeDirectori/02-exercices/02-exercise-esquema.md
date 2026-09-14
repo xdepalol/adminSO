@@ -8,7 +8,7 @@
 ### **1.1. Mira el següent DN i identifica cada component:**
 
 ```
-uid=mpuig,ou=Professorat,ou=Departament,dc=ins-torreraja,dc=cat
+uid=mpuig,ou=Professorat,ou=Departament,dc=ins-torreroja,dc=cat
 ```
 
 Respon:
