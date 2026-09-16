@@ -22,7 +22,7 @@ style: |
 ### Capítol 2 - Introducció a l'Esquemax    
 
 **Mòdul 0374** - Administració de Sistemes Operatius  
-**Professor**: **Hèctor Pascual**
+**Professor**: **Javire de Palol**
 
 ---
 

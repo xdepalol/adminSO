@@ -27,7 +27,7 @@ style: |
 
 **ASIX**       - Administració de Sistemes i Xarxes 
 **Mòdul 0374** - Administració de Sistemes Operatius
-**Professor**  -  Hèctor Pascual
+**Professor**  -  Javire de Palol
 
 ---
 
