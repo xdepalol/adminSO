@@ -114,7 +114,7 @@ Una **terminal** permet interactuar amb el sistema mitjançant ordres.
 Exemple de prompt:
 
 ```bash
-hector@server:~$
+javier@server:~$
 ```
 
 El sistema espera una comanda.
@@ -188,7 +188,7 @@ ssh admin@192.168.1.20
 Sessió típica:
 
 ```
-hector@pc:~$ ssh admin@192.168.1.20
+javier@pc:~$ ssh admin@192.168.1.20
 admin@192.168.1.20's password:
 
 admin@server:~$
@@ -433,7 +433,7 @@ Exemple d'usuaris Linux:
 
 ```bash
 cat /etc/passwd
-# hector:x:1000:1000:Javier de Palol:/home/hector:/bin/bash
+# javier:x:1000:1000:Javier de Palol:/home/javier:/bin/bash
 ```
 
 Crear usuari:
@@ -456,7 +456,7 @@ Fitxer de configuració:
 Exemple:
 
 ```
-AllowUsers admin hector
+AllowUsers admin javier
 ```
 
 Només aquests usuaris poden accedir
@@ -533,7 +533,7 @@ Cal documentar:
 Servei: SSH
 Servidor: 192.168.1.20
 Port: 22
-Usuaris: admin, hector
+Usuaris: admin, javier
 Config: /etc/ssh/sshd_config
 ```
 

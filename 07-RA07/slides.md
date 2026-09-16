@@ -130,14 +130,14 @@ ps aux | grep ssh
 
 - filtres i selecció de resultats
 ```bash
-cat /etc/passwd | grep hector
+cat /etc/passwd | grep javier
 # cat /etc/passwd mostra el contingut del fitxer
-# grep hector selecciona només les línies on surt hector
+# grep javier selecciona només les línies on surt javier
 ```
 
 - variables
 ```bash
-USUARI="hector"
+USUARI="javier"
 echo $USUARI
 # USUARI guarda un valor
 # echo $USUARI mostra el contingut de la variable

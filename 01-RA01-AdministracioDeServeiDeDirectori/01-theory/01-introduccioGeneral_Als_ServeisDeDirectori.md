@@ -108,7 +108,7 @@ Exemples LDAP:
 uid: jdepalol
 cn: Javier de Palol
 sn: de Palol
-mail: [hector.depalol@empresa.local](mailto:hector.depalol@empresa.local)
+mail: [javier.depalol@empresa.local](mailto:javier.depalol@empresa.local)
 objectClass: inetOrgPerson
 
 ```

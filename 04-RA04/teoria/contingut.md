@@ -98,7 +98,7 @@ L’usuari escriu una ordre i el sistema operatiu l’executa.
 Exemple de prompt:
 
 ```bash
-hector@server:~$
+javier@server:~$
 ```
 
 A partir d’aquest moment es poden executar diferents ordres del sistema.
@@ -209,7 +209,7 @@ Un cop autenticat, s’obre la terminal del sistema remot.
 ### Exemple de sessió SSH
 
 ```bash
-hector@pc:~$ ssh admin@192.168.1.20
+javier@pc:~$ ssh admin@192.168.1.20
 admin@192.168.1.20's password:
 
 admin@server:~$
@@ -762,7 +762,7 @@ En SSH això es pot configurar en el fitxer:
 Per exemple:
 
 ```text
-AllowUsers admin hector
+AllowUsers admin javier
 ```
 
 Aquesta configuració permet que només aquests usuaris puguin connectar-se al servidor.
@@ -889,7 +889,7 @@ Un exemple simple de documentació d’un servidor SSH podria ser:
 Servei: SSH
 Servidor: 192.168.1.20
 Port: 22
-Usuaris autoritzats: admin, hector
+Usuaris autoritzats: admin, javier
 Fitxer de configuració: /etc/ssh/sshd_config
 ```
 

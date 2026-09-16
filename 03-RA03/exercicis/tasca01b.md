@@ -26,13 +26,13 @@ Resultat > no troba res
     atq
 
     # crear una tasca puntual (s’executa un sol cop)
-    echo "echo 'Hola, tasca puntual' >> /home/hector/tasca_at.log" | at now + 1 minute
+    echo "echo 'Hola, tasca puntual' >> /home/javier/tasca_at.log" | at now + 1 minute
 
     # opcional - comprovar que ha quedat programada
     atq
 
     # després d’1 minut, comprovar evidència (output)
-    cat /home/hector/tasca_at.log
+    cat /home/javier/tasca_at.log
 
     # opcional - comprovar evidència al log del servei atd
     journalctl -u atd --since "5 minutes ago"

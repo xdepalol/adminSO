@@ -96,18 +96,18 @@ I a `tasca01Manual.md` surt:
 ---
 
 ## Pregunta 4
-**Què fa la directiva `AllowUsers admin hector` dins de `sshd_config`?**  
-A) Crea els usuaris admin i hector  
-B) Permet només l’accés SSH als usuaris admin i hector  
-C) Dona permisos d’administrador a admin i hector  
-D) Bloqueja l’accés SSH a admin i hector  
+**Què fa la directiva `AllowUsers admin javier` dins de `sshd_config`?**  
+A) Crea els usuaris admin i javier  
+B) Permet només l’accés SSH als usuaris admin i javier  
+C) Dona permisos d’administrador a admin i javier  
+D) Bloqueja l’accés SSH a admin i javier  
 
-**Resposta correcta: B) Permet només l’accés SSH als usuaris admin i hector**
+**Resposta correcta: B) Permet només l’accés SSH als usuaris admin i javier**
 
 ### Per què és correcta
 A `slides.md` surt literalment:
 
-> **“AllowUsers admin hector”**  
+> **“AllowUsers admin javier”**  
 > **“Només aquests usuaris poden accedir.”**
 
 Això coincideix exactament amb l’opció B.
@@ -262,7 +262,7 @@ I també l’exemple:
 
 > **“Servei: SSH”**  
 > **“Port: 22”**  
-> **“Usuaris: admin, hector”**
+> **“Usuaris: admin, javier”**
 
 ### Per què les altres no ho són
 - **A), C), D)** no formen part de la documentació tècnica treballada al material.
