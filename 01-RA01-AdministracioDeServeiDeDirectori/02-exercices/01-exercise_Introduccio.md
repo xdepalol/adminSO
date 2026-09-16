@@ -50,7 +50,7 @@ Digues si cada exemple és un **objecte d’usuari**, **d’equip**, **de grup**
 
 | Exemple           | Categoria |
 | ----------------- | --------- |
-| cn=Hector Pascual |           |
+| cn=Javier de Palol |           |
 | cn=PC-A201        |           |
 | ou=Professors     |           |
 | cn=AlumnesA2      |           |

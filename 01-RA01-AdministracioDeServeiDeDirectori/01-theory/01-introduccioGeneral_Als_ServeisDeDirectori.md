@@ -105,8 +105,8 @@ Cada objecte es descriu amb atributs.
 
 Exemples LDAP:
 ```
-uid: hpascual
-cn: Hector Pascual
+uid: jdepalol
+cn: Javier de Palol
 sn: Pascual
 mail: [hector.pascual@empresa.local](mailto:hector.pascual@empresa.local)
 objectClass: inetOrgPerson
@@ -140,7 +140,7 @@ Exemple:
 ```
 dc=empresa,dc=local
 ├── ou=Professors
-│    ├── cn=Hector Pascual
+│    ├── cn=Javier de Palol
 │    └── cn=Montse Grau
 ├── ou=Alumnes
 │    ├── cn=Joel Font

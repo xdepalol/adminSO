@@ -433,7 +433,7 @@ Exemple d'usuaris Linux:
 
 ```bash
 cat /etc/passwd
-# hector:x:1000:1000:Hector Pascual:/home/hector:/bin/bash
+# hector:x:1000:1000:Javier de Palol:/home/hector:/bin/bash
 ```
 
 Crear usuari:
