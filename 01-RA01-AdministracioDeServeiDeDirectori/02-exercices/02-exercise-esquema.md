@@ -3,44 +3,52 @@
 <br>
 <br>
 
-# **1. Identificació de components de l’esquema**
+# 1.Disseny de l'estructura del directori
 
-### **1.1. Mira el següent DN i identifica cada component:**
+**TorreTech** és una empresa amb dues seus, **Barcelona** i **Girona**. A totes dues seus hi treballa personal dels departaments d'**Informàtica**, **Administració** i **Comercial**. L'empresa utilitza el domini `torretech.test` i vol organitzar els seus usuaris mitjançant un servei de directori.
 
-```
-uid=mpuig,ou=Professorat,ou=Departament,dc=ins-torreroja,dc=cat
-```
+### 1.1. Dissenya el DIT
+
+Dissenya un possible DIT per a **TorreTech** que permeti organitzar els usuaris segons la seu i el departament. Representa'l en forma d'arbre.
+
+### 1.2. Afegeix usuari al DIT
+
+Afegeix al DIT anterior l'usuari **Laia Serra**, que treballa al departament d'Informàtica de la seu de Barcelona. El seu identificador d'usuari és `lserra`.
+
+a) Escriu el DN complet de Laia Serra.  
+b) Quin és el seu RDN?  
+c) Identifica els components dc i ou que apareixen en el DN.  
+
+### 1.3 Reorganitza el DIT
+
+El DIT es podria haver organitzat de manera diferent. Proposa una **estructura alternativa** que continuï permetent representar les dues seus i els tres departaments.
 
 Respon:
 
-a) Quin és el **RDN**?  
-b) Quines són les **OUs**?  
-c) Quina és l’**arrel del domini (DC)**?  
-d) On viuria aquest objecte dins del DIT? (Representa-ho com un arbre.)  
+a) Representa-la en forma d'arbre.  
+b) Explica quin criteri has utilitzat per organitzar-la.  
+c) Indica un avantatge o inconvenient respecte de la primera estructura.  
 
 <br>
 <br>
 
-# **2. Comparació AD vs LDAP segons el mapa conceptual**
+# 2. Components d'Active Directory
 
-A partir del mapa conceptual
+### 2.1 Relació entre els components d'un entorn Active Directory
 
-![AD mapa conceptual](image.png)
+Relaciona les funcionalitats següents amb LDAP, Kerberos, DNS o GPO, segons correspongui:
 
-### **2.1. Digues tres funcions bàsiques d’un servei de directori.**
+* Consulta i gestió d'objectes del directori.
+* Autenticació dels usuaris.
+* Localització dels serveis i controladors de domini.
+* Aplicació de configuracions i polítiques als usuaris i equips.
 
-* 
-* 
-* 
-
-Després contesta:
-
-**2.2. Existeixen també en un directori LDAP? Explica per què.**
+### 2.2. Explica breument quina funció té LDAP dins d'Active Directory.
 
 <br>
 <br>
 
-#  **3. Anàlisi de classes d’objecte (objectClass)**
+# 3. Anàlisi de classes d’objecte (objectClass)
 
 Tens la següent definició d’una classe d’objecte de LDAP (capítol 8):
 
@@ -59,13 +67,12 @@ Respon:
 a) Quin tipus de classe és? (Estructural / Auxiliar / Abstracta)  
 b) Quins atributs **obligatoris** té?  
 c) Quins atributs **opcionals** té?  
-d) Quin seria un **exemple real** de valor per a `cn`, `sn` i `mail`?  
-e) Aquest objecte existiria també en AD? Justifica la resposta  
+d) Posa un exemple de valor per a `cn`, `sn` i `mail` d'un usuari de l'empresa TorreTech  
 
 <br>
 <br>
 
-#  **4. Definició d’atributs (attributetype)**
+# 4. Definició d’atributs (attributetype)
 
 A partir d’aquesta definició d’atribut del capítol 8:
 
@@ -81,27 +88,28 @@ Respon:
 
 a) Quina és la sintaxi utilitzada?  
 b) Per què és important saber si és `SINGLE-VALUE` o `MULTI-VALUE`?  
-c) Posa un exemple de valor vàlid i un exemple de valor invàlid segons la sintaxi  
-d) AD utilitza aquest mateix atribut internament? Explica-ho  
+c) Posa un exemple de valor vàlid per a `cn`. Podria aquest atribut tenir dos valors diferents al mateix objecte? Justifica la resposta  
+d) L'atribut `cn` també existeix a Active Directory? Justifica la resposta a partir de l'esquema d'AD estudiat.  
 
 <br>
 <br>
 
-#  **5. Creació d’un objecte d’usuari (mix AD + LDAP)**
+#  5. Creació d’un objecte d’usuari (mix AD + LDAP)
 
 Et donem la següent informació d’un usuari d’empresa:
 
 * Nom: **Laura Pujol**
 * Usuari: **lpujol**
 * Departament: **Informàtica**
-* Rol: **Professora**
-* Correu: **lpujol@ins-torreroja.cat**
+* Seu: **Girona**
+* Rol: **Superusuari Informàtica**
+* Correu: **lpujol@torretech.test**
 
-### **5.1. Escriu el DN correcte d’aquest usuari en LDAP**
+### 5.1. Escriu un DN adequat per a aquest usuari
 
-(Suposa que forma part del domini `ins-torreroja.cat`.)
+Escriu un DN adequat per a aquest usuari, mantenint l'estructura del DIT que has dissenyat a l'apartat 1.
 
-### **5.2. Escriu com quedaria l’usuari en un LDIF** (només atributs bàsics):
+### 5.2. Escriu com quedaria l’usuari en un LDIF (només atributs bàsics):
 
 ```
 dn: ...
@@ -112,9 +120,10 @@ uid: ...
 mail: ...
 ```
 
-### **5.3. Escriu quins objectes crearies a AD per representar la mateixa estructura del cas anterior**
+### 5.3. Escriu quins objectes crearies a AD
 
-(OU, usuari, grups, etc.)
+Explica quines OU, usuari i grups crearies a Active Directory del subapartat anterior per representar Laura Pujol dins de TorreTech. Tingues en compte la seva seu, departament i rol.
+
 
 <br>
 <br>
@@ -123,7 +132,6 @@ mail: ...
 
 Contesta:
 
-a) Per què en AD podem tenir un usuari amb `sAMAccountName`, però en LDAP utilitzem `uid`?  
-b) Per què LDAP permet múltiples objectClasses però AD no?  
-c) Quins avantatges té AD per grans entorns i quins avantatges té LDAP?  
+a) `sAMAccountName` i `uid` poden identificar un usuari en diferents esquemes de directori. Explica en quin context podem trobar cadascun d'aquests atributs.  
+b) Per què una entrada LDAP pot tenir més d'un valor `objectClass`? Què aporta cada classe a l'objecte?  
 
