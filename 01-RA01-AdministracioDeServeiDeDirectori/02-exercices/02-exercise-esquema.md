@@ -17,13 +17,11 @@ Afegeix al DIT anterior l'usuari **Laia Serra**, que treballa al departament d'I
 
 a) Escriu el DN complet de Laia Serra.  
 b) Quin és el seu RDN?  
-c) Identifica els components dc i ou que apareixen en el DN.  
+c) Identifica els components `dc` i `ou` que apareixen en el DN.  
 
 ### 1.3 Reorganitza el DIT
 
 El DIT es podria haver organitzat de manera diferent. Proposa una **estructura alternativa** que continuï permetent representar les dues seus i els tres departaments.
-
-Respon:
 
 a) Representa-la en forma d'arbre.  
 b) Explica quin criteri has utilitzat per organitzar-la.  
@@ -67,7 +65,7 @@ Respon:
 a) Quin tipus de classe és? (Estructural / Auxiliar / Abstracta)  
 b) Quins atributs **obligatoris** té?  
 c) Quins atributs **opcionals** té?  
-d) Posa un exemple de valor per a `cn`, `sn` i `mail` d'un usuari de l'empresa TorreTech  
+d) Posa un exemple de valor per a `cn`, `sn` i `mail` d'un usuari de l'empresa TorreTech.  
 
 <br>
 <br>
@@ -86,9 +84,9 @@ attributetype ( 2.5.4.3
 
 Respon:
 
-a) Quina és la sintaxi utilitzada?  
+a) L'OID que apareix després de `SYNTAX` identifica una sintaxi LDAP. Quina és?  
 b) Per què és important saber si és `SINGLE-VALUE` o `MULTI-VALUE`?  
-c) Posa un exemple de valor vàlid per a `cn`. Podria aquest atribut tenir dos valors diferents al mateix objecte? Justifica la resposta  
+c) Posa un exemple de valor vàlid per a `cn`. Podria aquest atribut tenir dos valors diferents al mateix objecte? Justifica la resposta.  
 d) L'atribut `cn` també existeix a Active Directory? Justifica la resposta a partir de l'esquema d'AD estudiat.  
 
 <br>
@@ -120,9 +118,9 @@ uid: ...
 mail: ...
 ```
 
-### 5.3. Escriu quins objectes crearies a AD
+### 5.3. Escriu quins objectes crearies al AD
 
-Explica quines OU, usuari i grups crearies a Active Directory del subapartat anterior per representar Laura Pujol dins de TorreTech. Tingues en compte la seva seu, departament i rol.
+Explica quines `ou`, usuari i grups crearies a Active Directory del subapartat anterior per representar Laura Pujol dins de TorreTech. Tingues en compte la seva seu, departament i rol.
 
 
 <br>
