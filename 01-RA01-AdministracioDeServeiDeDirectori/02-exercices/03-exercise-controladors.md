@@ -1,153 +1,271 @@
 # **EXERCICI CAPÍTOL 3: Controladors de domini i arquitectures AD/LDAP**
 
-Exercici d'avaluació i comprensió dels conceptes teòrics del capítol 3:
+## Context
 
-* Què és un controlador de domini   
-* Quina arquitectura defineix AD  
-* Quina arquitectura defineix LDAP  
-* Com s'organitzen els dominis, arbres i boscos  
-* Com es representa la informació en un DIT  
-* Com es relacionen AD i LDAP a nivell conceptual  
+**TorreTech** és una empresa amb dues seus, **Barcelona** i **Girona**. A totes dues seus hi treballa personal dels departaments d'**Informàtica**, **Administració** i **Comercial**.
 
-<br>
-<br>
-
-# **PART 1: Preguntes conceptuals (resposta curta)**
-
-### **1. Defineix Controlador de Domini (Domain Controller)**
-
-Descriu quin paper té dins d'un servei de directori i quina informació manté.
-
----
-
-### **2. Quin és el paper de *Kerberos* en l'arquitectura d'un controlador de domini AD?**
-
-Explica per què és necessari i què aporta.
-
----
-
-### **3. Explica la diferència entre:**
-
-* **Domini**
-* **Arbre**
-* **Bosc**
-
-Fes servir un exemple jeràrquic senzill.
-
----
-
-### **4. Què és un *Global Catalog*?**
-
-Quina funció té dins l'arquitectura AD i per què és important en entorns amb múltiples dominis?
-
----
-
-### **5. En LDAP, què és un *DIT (Directory Information Tree)*?**
-
-Descriu-lo amb una frase clara i un exemple sintètic.
-
----
-
-### **6. Quina diferència conceptual hi ha entre AD i LDAP pel que fa a:**
-
-* estructura del directori,
-* autenticació,
-* rols del servidor.
-
-No parlis d'instal·lació, només d'arquitectura.
-
----
-
-### **7. Defineix *DN* i *RDN* en LDAP.**
-
-Dóna un exemple de cadascun.
-
----
-
-### **8. Per què els controladors de domini han d'utilitzar replicació multimestre?**
-
-Quin problema resol?
-
-<br>
-<br>
-
-# **PART 2: Exercicis d'anàlisi d'arquitectura (teoria aplicada)**
-
-### **9. Dibuixa (en text) l'arquitectura mínima d'un entorn AD amb:**
-
-* Un domini `ins.local`
-* Un controlador principal de domini
-* Un controlador de domini replicat
-* Dos clients
-
-Representa el flux conceptual d'autenticació
-*(Sense instal·lar res.)*
-
----
-
-### **10. En un entorn 100% Linux, explica com funcionaria l'autenticació utilitzant OpenLDAP.**
-
-Descriu el flux general: client → servidor → validació d'atributs
-
----
-
-### **11. Analitza aquest DN i explica cada component:**
+L'empresa utilitza el domini:
 
 ```
-uid=mpuig,ou=Professorat,dc=ins-torreroja,dc=cat
+torretech.test
 ```
 
-Indica:
+En els exercicis anteriors has dissenyat l'estructura lògica del directori i has treballat amb els objectes i atributs que permeten representar-ne la informació.
 
-* Quin és el RDN
-* Quines són les OUs
-* Quin és el domini
-* On se situaria l'objecte dins del DIT
+Ara **TorreTech** vol desplegar una infraestructura basada en **Active Directory** per centralitzar la gestió d'usuaris, equips i recursos.
+
+L'empresa necessita que:
+
+* els usuaris puguin iniciar sessió amb un compte corporatiu
+* els equips Windows formin part del domini
+* els administradors puguin gestionar de manera centralitzada usuaris, grups i equips
+* les dues seus puguin continuar treballant davant d'una incidència temporal en les comunicacions
+* la informació del directori es mantingui sincronitzada entre els servidors
+
+> En aquest exercici **no cal instal·lar ni configurar cap servidor**. L'objectiu és analitzar i dissenyar l'arquitectura que posteriorment implementarem.
 
 ---
 
-### **12. Un institut té dos edificis diferents però vol una administració centralitzada.**
+## 1. Del directori al controlador de domini
 
-Sense parlar d'instal·lacions, indica:
+### 1.1. El controlador de domini
 
-* Quants dominis necessitaria
-* Com s'organitzaria l'arquitectura AD (domini/arbres/bosc)
-* Com circularia la informació entre controladors de domini
+TorreTech necessita un servidor que permeti posar en funcionament el directori que has dissenyat.
 
-<br>
-<br>
+Explica amb les teves paraules què és un **controlador de domini (DC)** i quines funcions realitzaria dins de TorreTech.
 
-# **PART 3: Exercici de comparació (AD vs LDAP)**
+En la resposta pots tenir en compte la gestió d'usuaris, grups i equips, l'autenticació, l'autorització i l'emmagatzematge de la informació del directori.
 
-### **13. Completa aquesta taula comparativa segons la teoria del Capítol 3**
+### 1.2. Del disseny lògic al servidor
 
-| Aspecte                | Active Directory (AD) | LDAP (OpenLDAP) |
-| ---------------------- | --------------------- | --------------- |
-| Naturalesa             | ?                     | ?               |
-| Organització           | ?                     | ?               |
-| Autenticació principal | ?                     | ?               |
-| Servei de directori    | ?                     | ?               |
-| Rol del servidor       | ?                     | ?               |
-| Model de replicació    | ?                     | ?               |
+En el capítol anterior vas dissenyar una estructura per representar les seus, departaments i usuaris de TorreTech.
 
-(Cada cel·la s'ha d'omplir segons la teoria)
+Explica la diferència entre:
 
-<br>
-<br>
+* **l'estructura lògica del directori**, i
+* **el controlador de domini que permet gestionar-la i oferir el servei als clients**.
 
-# **PART 4: Exercici de disseny conceptual**
+Indica també alguns dels objectes del teu disseny anterior que gestionaria el controlador de domini.
 
-### **14. Dissenya un model d'arquitectura AD + LDAP per un centre educatiu que:**
+---
 
-* Tingui professors i alumnes
-* Necessiti control centralitzat d'identitat
-* Utilitzi AD per Windows i LDAP com a font externa d'aplicacions (Moodle o Nextcloud)
+## 2. Domini, arbre i bosc
 
-Sense parlar d'instal·lació, indica:
+### 2.1. El domini de TorreTech
 
-* Com es relacionen conceptualment els dos serveis
-* Quin rol fa cadascun
-* Quin servidor actua com a font d'identitat
-* Quin manté el DIT i quin manté el domini
+TorreTech vol utilitzar un únic domini per gestionar inicialment les dues seus.
 
+a) Quin seria el nom DNS del domini d'Active Directory?
 
+b) Què representa aquest domini dins de l'arquitectura?
+
+c) Barcelona i Girona necessiten ser dos dominis diferents? Justifica la resposta.
+
+d) Explica com podries representar les dues seus i els seus departaments **dins del mateix domini**, aprofitant els conceptes treballats als exercicis anteriors.
+
+### 2.2. Arbre i bosc
+
+Tenint en compte l'arquitectura inicial de TorreTech, respon:
+
+a) Quants dominis té inicialment?
+
+b) Quants arbres?
+
+c) Quants boscos?
+
+d) Explica amb les teves paraules la relació que hi ha entre **domini, arbre i bosc** en aquest cas.
+
+### 2.3. TorreTech creix
+
+Uns anys després, TorreTech incorpora una altra empresa que utilitza el domini:
+
+```text
+northwind.example
+```
+
+Suposa que l'empresa decideix incorporar aquest domini **dins del mateix bosc d'Active Directory** que TorreTech.
+
+Respon:
+
+a) `torretech.test` i `northwind.example` formarien part del mateix arbre o d'arbres diferents? Justifica-ho a partir dels seus noms DNS.
+
+b) Quants dominis, arbres i boscos tindria ara l'arquitectura?
+
+c) Què compartirien els dos arbres pel fet de pertànyer al mateix bosc?
+
+---
+
+## 3. Serveis que fan funcionar Active Directory
+
+### 3.1. Relaciona cada necessitat amb el component principal
+
+Indica quin component intervé principalment en cada situació: **LDAP, Kerberos, DNS o GPO**.
+
+| Necessitat                                           | Component |
+| ---------------------------------------------------- | --------- |
+| Consultar usuaris, grups i equips del directori      |           |
+| Autenticar un usuari que inicia sessió               |           |
+| Localitzar un controlador de domini                  |           |
+| Aplicar una configuració als equips d'un departament |           |
+| Consultar objectes del directori des d'una aplicació |           |
+
+> Recupera els conceptes treballats al capítol 2 i utilitza’ls després per explicar els següents escenaris
+
+### 3.2. Inici de sessió al domini
+
+La **Laura Pujol** arriba a la seu de Girona i inicia sessió en un ordinador que forma part del domini `torretech.test`.
+
+Explica de manera conceptual què passa des que introdueix les seves credencials fins que el domini valida la seva identitat.
+
+En l'explicació han d'aparèixer:
+
+* el paper de **DNS** per localitzar un controlador de domini
+* el paper de **Kerberos** en l'autenticació
+* el paper d'**Active Directory** en la validació de la identitat i la pertinença a grups
+
+> No cal explicar els algoritmes criptogràfics utilitzats per Kerberos.
+
+### 3.3. Una aplicació consulta el directori
+
+Una aplicació web interna de TorreTech necessita consultar els usuaris i grups emmagatzemats al directori.
+
+a) Quin protocol podria utilitzar per fer aquestes consultes?
+
+b) Quina informació podria obtenir del directori?
+
+c) L'aplicació necessita convertir-se en un controlador de domini per consultar aquesta informació? Justifica-ho.
+
+d) Explica la diferència entre **consultar el directori** i **actuar com a controlador de domini**.
+
+---
+
+## 4. Dos controladors de domini i replicació
+
+TorreTech vol millorar la disponibilitat del servei instal·lant un controlador de domini a cada seu:
+
+```text
+Barcelona → DC-BC01
+Girona    → DC-GI01
+```
+
+Tots dos formen part del domini:
+
+```text
+torretech.test
+```
+
+### 4.1. Representa l'arquitectura
+
+Completa el diagrama següent incorporant:
+
+* `DC-BC01`
+* `DC-GI01`
+* un client de Barcelona
+* un client de Girona
+* el domini `torretech.test`
+* la replicació entre els dos controladors
+
+```text
+                 torretech.test
+
+           DC-BC01           DC-GI01
+              |                  |
+         Client BC          Client GI
+```
+
+Indica amb fletxes com es produeix la replicació de la informació.
+
+### 4.2. Per què dos controladors?
+
+Explica **dos avantatges** de disposar d'un controlador de domini a Barcelona i un altre a Girona.
+
+Relaciona la resposta amb les necessitats de TorreTech.
+
+### 4.3. Cau la comunicació entre les seus
+
+Una avaria interromp durant una hora la comunicació entre Barcelona i Girona. Els dos controladors de domini continuen funcionant correctament.
+
+Respon:
+
+a) Podrien continuar autenticant-se els usuaris de Barcelona? Per què?
+
+b) Podrien continuar autenticant-se els usuaris de Girona? Per què?
+
+c) Es podrien replicar els canvis entre `DC-BC01` i `DC-GI01` durant l'avaria?
+
+d) Què hauria de passar amb els canvis quan es recuperés la comunicació?
+
+e) Què podria passar si durant la interrupció es modifiqués el mateix objecte des dels dos controladors?
+
+> Considera que cada seu disposa d’un controlador de domini operatiu i que els clients poden resoldre correctament els serveis locals.
+
+### 4.4. Replicació multimàster
+
+A partir del cas anterior, explica què significa que Active Directory utilitzi un model de **replicació multimàster**.
+
+En la resposta indica:
+
+* si els dos controladors poden rebre modificacions
+* per què aquest model millora la disponibilitat
+* per què cal sincronitzar posteriorment els canvis
+* per què poden ser necessaris mecanismes de resolució de conflictes
+
+---
+
+## 5. Global Catalog
+
+Suposa ara que TorreTech ha incorporat Northwind i que els dos dominis formen part del mateix bosc d’Active Directory:
+
+```text
+Bosc TorreTech
+│
+├── torretech.test
+│
+└── northwind.example
+```
+
+Un administrador necessita poder localitzar objectes del bosc sense haver de saber prèviament en quin domini es troben.
+
+### 5.1. Cerca dins del bosc
+
+Explica què és el **Global Catalog** i per què resulta útil en aquesta arquitectura.
+
+En la resposta diferencia entre:
+
+* la informació completa del domini propi
+* la informació parcial procedent dels altres dominis del bosc
+
+### 5.2. I si només hi hagués un domini?
+
+Torna a la situació inicial, en què TorreTech només tenia:
+
+```text
+torretech.test
+```
+
+El Global Catalog continuaria existint i tenint utilitat?
+
+Justifica breument la resposta tenint en compte que ja no caldria cercar objectes en altres dominis.
+
+---
+
+## 6. Síntesi de l'arquitectura
+
+Torna a la situació inicial de TorreTech, abans de la incorporació de **Northwind**.
+
+Representa en **un únic diagrama** l'arquitectura que proposaries per donar servei a Barcelona i Girona.
+
+El diagrama ha d'incloure com a mínim:
+
+* el domini `torretech.test`
+* les dues seus
+* `DC-BC01` i `DC-GI01`
+* clients de les dues seus
+* la relació entre clients i controladors de domini
+* DNS
+* Kerberos
+* la replicació entre els controladors
+
+Acompanya el diagrama d'una **breu justificació** de les decisions preses.
+
+> La justificació ha de ser breu (màxim 10–12 línies) i ha d’explicar per què has decidit aquest nombre de dominis, controladors i serveis.
