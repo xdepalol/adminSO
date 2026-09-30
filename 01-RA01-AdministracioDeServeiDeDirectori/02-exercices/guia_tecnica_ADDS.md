@@ -920,6 +920,20 @@ i obrir-lo amb el navegador.
 
 > **No et limitis a comprovar que l'efecte visual de la política existeix.** `gpresult` permet obtenir evidència de quines polítiques ha processat realment el client.
 
+### Consulta de les GPO aplicades a l'equip
+
+Per visualitzar amb `gpresult /r` les polítiques aplicades a l'equip, inicia una sessió amb un compte administrador i executa l'ordre. No és suficient iniciar una sessió amb un usuari estàndard i obrir posteriorment PowerShell com a administrador: en aquest cas, `gpresult` pot no mostrar la informació de les polítiques d'equip que necessites verificar.
+
+## 8.8 Exemple de política d'equip: gestió de Windows Update
+
+Les GPO poden aplicar configuracions específiques als equips mitjançant **Computer Configuration**. Per exemple, es pot controlar el comportament de les actualitzacions automàtiques de Windows des de les plantilles administratives de Windows Update.
+
+Aquest tipus de polítiques permet definir aspectes com el comportament de la descàrrega, la instal·lació o el reinici dels equips. Segons la política configurada, això no implica necessàriament impedir que un usuari amb permisos pugui iniciar manualment una actualització.
+
+En una infraestructura corporativa, aquestes restriccions poden formar part d'una estratègia d'actualització centralitzada. Per exemple, una organització pot utilitzar Windows Server Update Services (WSUS) per controlar centralment l'aprovació i distribució de les actualitzacions, mentre que les GPO defineixen el comportament dels equips clients.
+
+> **Important**: una GPO configurada a **Computer Configuration** s'aplica als objectes d'equip, no als usuaris que hi inicien sessió. Per tant, cal comprovar on es troba l'objecte de l'equip dins d'Active Directory i on està vinculada la GPO.
+
 ---
 
 # 9. Automatització amb PowerShell
@@ -1032,6 +1046,7 @@ Aquestes ordres són especialment útils durant un desplegament.
 | `whoami /groups` | Consultar grups del testimoni de l'usuari |
 | `gpupdate /force` | Forçar actualització de GPO |
 | `gpresult /r` | Consultar les GPO processades |
+| `gpresult /r` <br />(**En una sessió de Admin**) |  Consultar les GPO processades incloent les d'**equip** |
 | `gpresult /h fitxer.html` | Generar un informe detallat de GPO |
 
 Una bona diagnosi intenta comprovar els components **per ordre**, en lloc de canviar configuracions aleatòriament.
