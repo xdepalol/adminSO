@@ -1,6 +1,6 @@
-# 📁 Ampliació — Dominis, boscos i relacions de confiança en Active Directory
+# Ampliació — Dominis, boscos i relacions de confiança en Active Directory
 
-## 🔹**1. Exemple de creació d'un segon domini**
+## 1. Exemple de creació d'un segon domini
 
 Imagineu una organització amb:
 
@@ -16,10 +16,10 @@ Agregar un nuevo dominio en un árbol existente
 S'afegeix al mateix **bosc** i es crea una confiança automàtica.
 
 
-## 🔹**2. Tipus de confiança**
+## 2. Tipus de confiança
 
 
-### 🔸**2.1. Confiança externa**
+### 2.1. Confiança externa
 
 Per connectar **dos dominis que no pertanyen al mateix bosc**.
 
@@ -54,7 +54,7 @@ Configuració (pràctica real amb AD)
 
 ---
 
-### 🔸**2.2. Confiança de domini**
+### 2.2. Confiança de domini
 
 Connecta dos dominis dins d'un **mateix arbre**.
 
@@ -81,7 +81,7 @@ No cal configurar-la manualment
 
 ---
 
-### 🔸**2.3. Confiança de boscos**
+### 2.3. Confiança de boscos
 
 Permet que **dos boscos sencers** comparteixin recursos.
 
@@ -114,7 +114,7 @@ Configuració:
 
 ---
 
-### 🔸**2.4. Confiança d'accés directe**
+### 2.4. Confiança d'accés directe
 
 Permet que dos dominis **no adjacents** dins del mateix bosc es comuniquin directament.
 
